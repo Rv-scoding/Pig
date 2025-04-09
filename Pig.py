@@ -34,42 +34,45 @@ def holdAtXTurn(target = 20):
 	
 
 # part 4
-def holdAtXTurn(target = 20, score = 0):
+def holdAtXTurn(target = 20, score = 0): #set score to whatever value
 	turnTotal = 0
+	scoreTotal = 0
 	pig = False
-	while turnTotal < target and not pig and score +turnTotal < 100:
+	while turnTotal < target and not pig and score + turnTotal < 100:
 		side = roll()
 		#print("Roll:",side)
 		if side == 1:
 			turnTotal = 0
+			scoreTotal = score
 			pig = True 
 		else:
 			turnTotal += side
+			scoreTotal = score + turnTotal
 	#print("Turn Total:", turnTotal)
+	#print("New Score:", scoreTotal)
 	return turnTotal
 
 
 # part 5
 def holdAtXTurn(target = 20, score = 0):
 	turnTotal = 0
-	scoreTotal = turnTotal
+	scoreTotal = 0
 	pig = False
-	
-	while turnTotal < target and not pig and score +turnTotal < 100:
+	while turnTotal < target and not pig and score + turnTotal < 100:
 		side = roll()
 		print("Roll:",side)
 		if side == 1:
 			turnTotal = 0
-			scoreTotal = 0
+			scoreTotal = score
 			pig = True 
 		else:
 			turnTotal += side
-			scoreTotal += side
+			scoreTotal = score + turnTotal
 	print("Turn Total:", turnTotal)
 	print("New Score:", scoreTotal)
-	return turnTotal	
+	return turnTotal
 
-	
+
 
 def holdAt20Outcomes(trials):
 	results = {}
@@ -110,13 +113,11 @@ def holdAtXOutcomes(trials, target = 20 ):
 
 
 
-
-
-
-
-
 	
 trials = 100000
 #trials = int(input("How many Hold-at-20 turn simulations?\n"))
 #holdAtXOutcomes(trials,100)
-holdAtXTurn(20)
+#score = int("Score?")
+#target = int("target?")
+
+holdAtXTurn()
