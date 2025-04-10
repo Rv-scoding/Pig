@@ -154,7 +154,7 @@ def Pig(target = 20):
 				print("New Score:", player2S)
 		
 
-			current_player = 2 if current_player == 1 else 1
+		current_player = 2 if current_player == 1 else 1
 		
 
 
