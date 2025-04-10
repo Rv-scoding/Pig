@@ -134,15 +134,6 @@ def Pig(target = 20):
 					user_input = input("Turn total:" + str(turnTotal) + "Roll/Hold? ")
 					if user_input != "":
 						break
-			'''print("Turn Total:", turnTotal)
-			if current_player == 1:
-				player1S += turnTotal	
-				print("Turn Total:", turnTotal)
-				print("New Score:", player1S)
-			else:
-				player2S += turnTotal
-				print("Turn Total:", turnTotal)
-				print("New Score:", player2S)'''
 		else:
 			while turnTotal < target and not pig and (player1S + turnTotal < 100 if current_player == 1 else player2S + turnTotal < 100):
 				side = roll()
@@ -163,7 +154,7 @@ def Pig(target = 20):
 				print("New Score:", player2S)
 		
 
-	current_player = 2 if current_player == 1 else 1
+			current_player = 2 if current_player == 1 else 1
 		
 
 
