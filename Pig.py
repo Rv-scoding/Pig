@@ -109,53 +109,55 @@ def TwoPlayer(target = 20):
 def coin():
 	return random.randint(1,2)
 def Pig(target = 20):
-	realPlayer = coin()
-	print("You will be player", realPlayer)
-	print("Enter nothing to roll; enter anything to hold")
-	player1S = 0
-	player2S = 0
-	current_player = 1
-	while player1S < 100 and player2S < 100:
-		turnTotal = 0
-		pig = False
-		print("Player 1 score:", player1S)
-		print("Player 2 score:", player2S)
-		print("It is player", current_player,"'s turn")
-		if current_player == realPlayer:
-			while turnTotal < target and not pig and (player1S + turnTotal < 100 if current_player == 1 else player2S + turnTotal < 100):
-				side = roll()
-				print("Roll:",side)
-				if side == 1:
-					turnTotal = 0
-					pig = True 
-					
-				else:
-					turnTotal += side
-					user_input = input("Turn total:" + str(turnTotal) + "Roll/Hold? ")
-					if user_input != "":
-						break
-		else:
-			while turnTotal < target and not pig and (player1S + turnTotal < 100 if current_player == 1 else player2S + turnTotal < 100):
-				side = roll()
-				print("Roll:", side)
-				if side == 1:
-					turnTotal = 0
-					pig = True
-				else:
-					turnTotal += side
-			print("Turn total:", turnTotal)
-			if current_player == 1:
-				player1S += turnTotal	
-				#print("Turn Total:", turnTotal)
-				print("New Score:", player1S)
-			else:
-				player2S += turnTotal
-				#print("Turn Total:", turnTotal)
-				print("New Score:", player2S)
-		
+    realPlayer = coin()
+    print("You will be player", realPlayer)
+    print("Enter nothing to roll; enter anything to hold")
 
-		current_player = 2 if current_player == 1 else 1
-		
+    player1S = 0
+    player2S = 0
+    current_player = 1
+
+    while player1S < 100 and player2S < 100:
+        turnTotal = 0
+        pig = False
+        print("Player 1 score:", player1S)
+        print("Player 2 score:", player2S)
+        print("It is player", current_player, "'s turn")
+
+        if current_player == realPlayer:
+            while turnTotal < target and not pig and (player1S + turnTotal < 100 if current_player == 1 else player2S + turnTotal < 100):
+                side = roll()
+                print("Roll:", side)
+                if side == 1:
+                    turnTotal = 0
+                    pig = True 
+                else:
+                    turnTotal += side
+                    user_input = input("Turn total:" + str(turnTotal) + " Roll/Hold? ")
+                    if user_input != "":
+                        if realPlayer == 1:
+                            player1S += turnTotal  
+                        else:
+                            player2S += turnTotal  
+                        break
+        else:
+            while turnTotal < target and not pig and (player1S + turnTotal < 100 if current_player == 1 else player2S + turnTotal < 100):
+                side = roll()
+                print("Roll:", side)
+                if side == 1:
+                    turnTotal = 0
+                    pig = True
+                else:
+                    turnTotal += side
+            print("Turn total:", turnTotal)
+            if current_player == 1:
+                player1S += turnTotal
+                print("New Score:", player1S)
+            else:
+                player2S += turnTotal
+                print("New Score:", player2S)
+
+        current_player = 2 if current_player == 1 else 1
 
 
 
