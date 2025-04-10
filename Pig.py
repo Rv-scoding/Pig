@@ -33,8 +33,8 @@ def holdAtXTurn(target = 20):
 	return turnTotal
 	
 
-# part 4
-def holdAtXTurn(target = 20, score = 0): #set score to whatever value
+# part 4  
+def holdAtXTurnP4(target = 20, score = 0): #set score to whatever value
 	turnTotal = 0
 	scoreTotal = 0
 	pig = False
@@ -50,28 +50,87 @@ def holdAtXTurn(target = 20, score = 0): #set score to whatever value
 			scoreTotal = score + turnTotal
 	#print("Turn Total:", turnTotal)
 	#print("New Score:", scoreTotal)
-	return turnTotal
+	return turnTotal 
 
 
 # part 5
 def holdAtXTurn(target = 20, score = 0):
-	turnTotal = 0
-	scoreTotal = 0
-	pig = False
-	while turnTotal < target and not pig and score + turnTotal < 100:
-		side = roll()
-		print("Roll:",side)
-		if side == 1:
-			turnTotal = 0
-			scoreTotal = score
-			pig = True 
-		else:
-			turnTotal += side
-			scoreTotal = score + turnTotal
-	print("Turn Total:", turnTotal)
-	print("New Score:", scoreTotal)
-	return turnTotal
+	while score < 100:
+		turnTotal = 0
+		pig = False
+		while turnTotal < target and not pig and score + turnTotal < 100:
+			side = roll()
+			#print("Roll:",side)
+			if side == 1:
+				turnTotal = 0
+				pig = True 
+			else:
+				turnTotal += side
+		score += turnTotal		
+		#print("Turn Total:", turnTotal)
+		#print("New Score:", score)
 
+
+# part 7
+def TwoPlayer(target = 20):
+	player1S = 0
+	player2S = 0
+	current_player = 1
+	while player1S < 100 and player2S < 100:
+		turnTotal = 0
+		pig = False
+		print("Player 1 score:", player1S)
+		print("Player 2 score:", player2S)
+		print("It is player", current_player,"'s turn")
+		while turnTotal < target and not pig and (player1S + turnTotal < 100 if current_player == 1 else player2S + turnTotal < 100):
+			side = roll()
+			print("Roll:",side)
+			if side == 1:
+				turnTotal = 0
+				pig = True 
+				
+			else:
+				turnTotal += side
+		if current_player == 1:
+			player1S += turnTotal	
+			print("Turn Total:", turnTotal)
+			print("New Score:", player1S)
+		else:
+			player2S += turnTotal
+			print("Turn Total:", turnTotal)
+			print("New Score:", player2S)
+		current_player = 2 if current_player == 1 else 1
+	
+			
+# part 8
+def Pig(target = 20):
+	player1S = 0
+	player2S = 0
+	current_player = 1
+	while player1S < 100 and player2S < 100:
+		turnTotal = 0
+		pig = False
+		print("Player 1 score:", player1S)
+		print("Player 2 score:", player2S)
+		print("It is player", current_player,"'s turn")
+		while turnTotal < target and not pig and (player1S + turnTotal < 100 if current_player == 1 else player2S + turnTotal < 100):
+			side = roll()
+			print("Roll:",side)
+			if side == 1:
+				turnTotal = 0
+				pig = True 
+				
+			else:
+				turnTotal += side
+		if current_player == 1:
+			player1S += turnTotal	
+			print("Turn Total:", turnTotal)
+			print("New Score:", player1S)
+		else:
+			player2S += turnTotal
+			print("Turn Total:", turnTotal)
+			print("New Score:", player2S)
+		current_player = 2 if current_player == 1 else 1
 
 
 def holdAt20Outcomes(trials):
@@ -111,13 +170,40 @@ def holdAtXOutcomes(trials, target = 20 ):
 		print(score,"\t",results[score]/trials)
 
 
-
+# Part 6
+def AveragePturns(Games, target = 20 ):
+	totalTurns = 0
+	for _ in range(Games):
+		score = 0
+		turns = 0
+		while score < 100:
+			turnTotal = holdAtXTurnP4(target, score)
+			score += turnTotal
+			turns += 1
+		totalTurns += turns
+	Averageturns = totalTurns / Games
+	print("Average turns:", Averageturns)
+	return Averageturns
+	
+	
+	
 
 	
 trials = 100000
+Games = trials
 #trials = int(input("How many Hold-at-20 turn simulations?\n"))
-#holdAtXOutcomes(trials,100)
 #score = int("Score?")
 #target = int("target?")
+#Games = int("Games?")
+#holdAtXOutcomes(trials,100)
+#holdAtXTurn()
+#AveragePturns(Games, 20)
+#TwoPlayer()
 
-holdAtXTurn()
+Pig()
+
+
+
+
+
+
