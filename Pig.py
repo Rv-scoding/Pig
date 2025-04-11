@@ -59,9 +59,9 @@ def holdAtXTurn(target = 15):
 	while score < 100:
 		turnTotal = 0
 		pig = False
-		while turnTotal < target and not pig and (score + turnTotal) < 100:
+		while turnTotal < target and not pig and score + turnTotal < 100:
 			side = roll()
-			#print("Roll:",side)
+			print("Roll:",side)
 			if side == 1:
 				turnTotal = 0
 				pig = True 
@@ -69,10 +69,10 @@ def holdAtXTurn(target = 15):
 				turnTotal += side
 				user_input = input("Turn total:" + str(turnTotal) + " Roll/Hold? ")
 				if	user_input != "":
-					score += turnTotal	
 					
-		
-		#print("New Score:", score)
+					break
+		score += turnTotal
+		print("New Score:", score)
 
 
 # part 7
