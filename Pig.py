@@ -54,7 +54,7 @@ def holdAtXTurnP4(target = 20, score = 0): #set score to whatever value
 
 
 # part 5
-def holdAtXTurn(target = 15):
+def holdAtXTurn(target = 20):
 	score = 0
 	while score < 100:
 		turnTotal = 0
@@ -230,11 +230,11 @@ def AveragePturns(Games, target = 20 ):
 #Games = int(input("Games?"))
 #holdAtXOutcomes(trials,100)
 #holdAtXTurnP4()
-holdAtXTurn()
+#holdAtXTurn()
 #AveragePturns(Games, 20)
 #TwoPlayer()
 
-#Pig()
+Pig()
 
 
 
